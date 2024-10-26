@@ -30,8 +30,8 @@ public class WindowHandleAssignment {
 		driver.switchTo().window(parent);
 		System.out.println(driver.findElement(By.xpath("//h3")).getText());
 		
-		//driver.close(); //difference between quit and close
-		driver.quit();
+		driver.close(); //difference between quit and close
+		//driver.quit();
 		
 
 	}

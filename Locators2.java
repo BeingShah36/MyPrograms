@@ -1,30 +1,34 @@
 package intro;
 
-import static org.testng.Assert.assertEquals;
+
 
 import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.testng.Assert;
 
 
-import net.jodah.failsafe.internal.util.Assert;
+
 
 public class Locators2 {
 
 	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
 		
-		System.setProperty("webdriver.chrome.driver","C:\\personal\\Selenium\\drivers\\chromedriver_win32\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver","C:\\personal\\Selenium\\drivers\\chromedriver-win64\\chromedriver.exe");
 		
-		WebDriver driver = new ChromeDriver();
+	       ChromeOptions ops = new ChromeOptions();
+
+	       ops.addArguments("--remote-allow-origins=*");
+	       WebDriver driver= new ChromeDriver(ops) ;
 		
 		String a = "shah";
 		
 		// creating object of the class to access getPassword method
-		Locators2 l1 = new Locators2();
-		String l2 = l1.getPassword(driver);
+	
 		
 		// another method to 
 		
@@ -35,6 +39,7 @@ public class Locators2 {
 		
 		driver.findElement(By.cssSelector("input#inputUsername")).sendKeys(a);
 		
+		String l2 = getPassword(driver);
 		driver.findElement(By.cssSelector("input[placeholder='Password']")).sendKeys(l2);
 		
 		driver.findElement(By.cssSelector("button.submit.signInBtn")).click();
@@ -46,8 +51,9 @@ public class Locators2 {
 	   org.testng.Assert.assertEquals(c,"You are successfully logged in.");
 	   
 	   String d = driver.findElement(By.xpath("//h2")).getText();
+	  
 	   
-	   org.testng.Assert.assertEquals(d,"Hello shah,");
+	   Assert.assertEquals(d,"Hello shah,");
 	   
 	   driver.findElement(By.cssSelector("button.logout-btn")).click();
 	   driver.close();
@@ -58,7 +64,7 @@ public class Locators2 {
 	}
  ///to parse the password
 	
-	public String getPassword(WebDriver driver) throws InterruptedException
+	public static String getPassword(WebDriver driver) throws InterruptedException
 	{
 		driver.get("https://rahulshettyacademy.com/locatorspractice/");
 		driver.findElement(By.linkText("Forgot your password?")).click();

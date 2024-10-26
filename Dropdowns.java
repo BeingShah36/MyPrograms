@@ -4,15 +4,23 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.internal.Configuration;
 
 public class Dropdowns {
 
 	public static void main(String[] args) throws InterruptedException {
 		
-       System.setProperty("webdriver.chrome.driver","C:\\personal\\Selenium\\drivers\\chromedriver_win32\\chromedriver.exe");
+       System.setProperty("webdriver.chrome.driver","C:\\personal\\Selenium\\drivers\\chromedriver-win64\\chromedriver.exe");
 		
-		WebDriver driver = new ChromeDriver();
+       ChromeOptions ops = new ChromeOptions();
+
+       ops.addArguments("--remote-allow-origins=*");
+       WebDriver driver= new ChromeDriver(ops) ;
+       
+		
+		
 		
 	driver.manage().window().maximize();	
 	

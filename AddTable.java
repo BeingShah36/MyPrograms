@@ -25,8 +25,8 @@ public class AddTable {
 		driver.get("https://rahulshettyacademy.com/AutomationPractice/");
 		getScreenshot(driver);
 
-		List<WebElement> Numbers = driver.findElements(By.cssSelector(".table-display td:nth-child(3)"));
-
+	List<WebElement> Numbers = driver.findElements(By.cssSelector(".table-display td:nth-child(3)"));
+		 
 		int sum = 0;
 		for (int i = 0; i < Numbers.size(); i++) {
 			int a = Integer.parseInt(Numbers.get(i).getText());

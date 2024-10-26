@@ -14,14 +14,15 @@ public class ImplicitlyWaits {
 
 	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
-		
-System.setProperty("webdriver.chrome.driver", "C:\\personal\\Selenium\\drivers\\chromedriver_win32\\chromedriver.exe");
-		
+
+	//	System.setProperty("webdriver.chrome.driver",
+	//			"C:\\personal\\Selenium\\drivers\\chromedriver_win32\\chromedriver.exe");
+
 		WebDriver driver = new ChromeDriver();
-		
+
 		driver.manage().window().maximize();
-		String[] a = {"Brocolli","Beetroot","Tomato"};
-		
+		String[] a = { "Brocolli", "Beetroot", "Tomato" };
+
 		driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		AddCart(driver, a);
@@ -30,46 +31,36 @@ System.setProperty("webdriver.chrome.driver", "C:\\personal\\Selenium\\drivers\\
 		driver.findElement(By.cssSelector("input.promoCode")).sendKeys("rahulshettyacadem");
 		driver.findElement(By.cssSelector("button.promoBtn")).click();
 		System.out.println(driver.findElement(By.cssSelector("span.promoInfo")).getText());
-		
-	
-	
 
 	}
-	
-	public static void AddCart(WebDriver driver,String[] a)
-	{
 
-    List<WebElement> b =	driver.findElements(By.xpath("//h4[@class='product-name']"));
-		for (int i=0; i<b.size();i++)
-		{
+	public static void AddCart(WebDriver driver, String[] a) {
+
+		List<WebElement> b = driver.findElements(By.xpath("//h4[@class='product-name']"));
+		for (int i = 0; i < b.size(); i++) {
 			String[] c = b.get(i).getText().split("-");
 			// c = Brocolli - 1kg
-		
-			//c[0]="Brocolli " c[1]=" 1kg"
+
+			// c[0]="Brocolli " c[1]=" 1kg"
 			String d = c[0].trim();
 			// d = Brocolli
-			
 
-			//convert array into array list for easy search because arraylist has methods for search
-	    List e = Arrays.asList(a);
-		int j=0;
-		if(e.contains(d))
-		{
-			j++;
-			driver.findElements(By.xpath("//div[@class='product-action']/button")).get(i).click();
+			// convert array into array list for easy search because arraylist has methods
+			// for search
+			List e = Arrays.asList(a);
+			int j = 0;
+			if (e.contains(d)) {
+				j++;
+				driver.findElements(By.xpath("//div[@class='product-action']/button")).get(i).click();
+			}
+
+			if (j == a.length) {
+				break;
+
+			}
+
 		}
-			
-		if(j==a.length)
-		{
-			break;
-		
-		}
-		
-		}
-		
-	}
-		
 
 	}
 
-
+}

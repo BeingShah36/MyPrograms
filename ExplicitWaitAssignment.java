@@ -24,8 +24,8 @@ public class ExplicitWaitAssignment {
 		driver.get("https://rahulshettyacademy.com/loginpagePractise/");
 		//Explicit wait
 	    WebDriverWait w = new WebDriverWait(driver,Duration.ofSeconds(5));
-		SignIn(driver,w);
 		
+		SignIn(driver, w);
 		w.until(ExpectedConditions.titleContains("ProtoCommerce"));
 		List<WebElement> d= driver.findElements(By.cssSelector("button.btn.btn-info"));
 		
